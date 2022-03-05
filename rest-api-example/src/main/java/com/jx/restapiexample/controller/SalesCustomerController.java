@@ -1,14 +1,15 @@
 package com.jx.restapiexample.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,8 @@ public class SalesCustomerController {
 
 	private final SalesCustomerRepository salesCustomerRepository;
 
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	public SalesCustomerController(SalesCustomerRepository salesCustomerRepository) {
 		this.salesCustomerRepository = salesCustomerRepository;
 	}
@@ -46,7 +49,8 @@ public class SalesCustomerController {
 	 */
 	@GetMapping("/salesCustomers")
 	CollectionModel<EntityModel<SalesCustomer>> getAll() {
-
+		
+		logger.info("entered /salesCustomer**************************************");
 		List<EntityModel<SalesCustomer>> salesCustomers = null;
 		try {
 			salesCustomers = salesCustomerRepository.findAll().stream().map(salesCustomer -> {
