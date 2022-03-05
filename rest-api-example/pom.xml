@@ -5,7 +5,7 @@
 
 	<groupId>com.jx</groupId>
 	<artifactId>rest-api-example</artifactId>
-	<version>1.0</version>
+	<version>5.0</version>
 
 	<name>rest-api-example</name>
 	<!-- FIXME change it to the project's website -->
