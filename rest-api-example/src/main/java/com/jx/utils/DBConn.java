@@ -12,6 +12,7 @@ public class DBConn {
 
 	private static void testDB(String dbURL, String user, String password, String query) {
 
+		// properties to be used
 		Properties properties = new Properties();
 		properties.put("user", user);
 		properties.put("password", password);
